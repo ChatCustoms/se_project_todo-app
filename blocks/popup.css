@@ -1,0 +1,152 @@
+.popup {
+  font-family: "Inter", Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.6s, opacity 0.6s;
+  z-index: 1;
+}
+
+.popup_visible {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.6s;
+}
+
+.popup__content {
+  max-width: 510px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.popup__close {
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: transparent url("../images/close.svg") center no-repeat;
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+.popup__title {
+  margin: 0;
+  display: inline;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.popup__form {
+  margin-top: 20px;
+}
+
+.popup__fieldset {
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.popup__label {
+  position: relative;
+  display: block;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #7d7d7d;
+}
+
+.popup__input {
+  width: 100%;
+  border: 1px solid #7d7d7d;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  box-sizing: border-box;
+  margin-top: 8px;
+  padding: 20px 12px;
+  transition: border 0.3s;
+}
+
+.popup__input::placeholder {
+  color: #7d7d7d;
+}
+
+.popup__input:focus {
+  outline: none;
+  border: 1px solid #181818;
+}
+
+.popup__input:focus::placeholder {
+  color: #181818;
+}
+
+.popup__input_type_date {
+  color: #7d7d7d;
+}
+
+.popup__input_type_error {
+  border: 1px solid #ff0000;
+}
+
+.popup__error {
+  display: block;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #ff0000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.popup__error_visible {
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.popup__button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  background-color: #5877e7;
+  border-radius: 8px;
+  border: none;
+  transition: visibility 0s, background 0.3s;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 630px) {
+  .popup {
+    align-items: flex-end;
+  }
+
+  .popup__content {
+    border-radius: 10px 10px 0 0;
+  }
+}

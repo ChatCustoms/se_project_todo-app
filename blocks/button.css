@@ -1,0 +1,37 @@
+.button {
+  background-color: #5877e7;
+}
+
+.button:hover {
+  background-color: #4460c4;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #2a45a3;
+}
+
+.button_disabled {
+  pointer-events: none;
+  background-color: #5877e74d;
+}
+
+.button_action_add {
+  padding: 12px 16px;
+  background-color: #5877e7;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  transition: 0.3s;
+  cursor: pointer;
+  font-family: Inter, Arial, sans-serif;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 630px) {
+  .button_action_add {
+    font-size: 16px;
+  }
+}

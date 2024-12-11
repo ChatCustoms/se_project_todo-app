@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple ToDo App</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="page__content">
+        <header class="header">
+          <h1 class="header__title">The Simple ToDo App</h1>
+          <p class="header__banner">Do these things</p>
+          <button class="button button_action_add header__button">
+            + Add Todo
+          </button>
+          <div class="popup" id="add-todo-popup">
+            <div class="popup__content">
+              <h3 class="popup__title">Add new ToDo</h3>
+              <button
+                aria-label="Close modal"
+                class="popup__close"
+                type="button"
+              ></button>
+              <form
+                class="popup__form"
+                name="add-todo-form"
+                id="add-todo-form"
+                novalidate
+              >
+                <fieldset class="popup__fieldset">
+                  <label class="popup__label" for="todo-name">
+                    What needs to be done?
+                    <input
+                      class="popup__input"
+                      id="todo-name"
+                      maxlength="40"
+                      minlength="2"
+                      name="name"
+                      placeholder="Write here"
+                      required
+                      type="text"
+                    />
+                    <span class="popup__error" id="todo-name-error"></span>
+                  </label>
+                  <label class="popup__label" for="todo-date">
+                    When does it need to be done? (optional)
+                    <input
+                      class="popup__input popup__input_type_date"
+                      id="todo-date"
+                      name="date"
+                      type="date"
+                      min="2023-01-01"
+                      max="3000-12-31"
+                    />
+                    <span class="popup__error" id="todo-date-error"></span>
+                  </label>
+                </fieldset>
+                <button class="button popup__button" type="submit">
+                  Create
+                </button>
+              </form>
+            </div>
+          </div>
+        </header>
+        <main>
+          <section class="counter">
+            <h2 class="counter__text">Showing X out of Y completed</h2>
+          </section>
+          <section class="todos">
+            <ul class="todos__list">
+              <template id="todo-template">
+                <li class="todo">
+                  <label class="todo__label" for="">
+                    <input class="todo__completed" id="" type="checkbox" />
+                    <span class="todo__name"></span>
+                    <span class="todo__date"></span>
+                  </label>
+                  <ul class="todo__buttons">
+                    <!-- List is used to support future additional buttons -->
+                    <li>
+                      <button class="todo__delete-btn" type="button"></button>
+                    </li>
+                  </ul>
+                </li>
+              </template>
+            </ul>
+          </section>
+          <script src="./pages/index.js" defer></script>
+          <script src="./scripts/validate.js" defer></script>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

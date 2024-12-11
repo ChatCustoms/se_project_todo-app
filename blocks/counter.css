@@ -1,0 +1,12 @@
+.counter {
+  padding: 20px 0 12px;
+}
+
+.counter__text {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #7d7d7d;
+  margin: 0;
+}
