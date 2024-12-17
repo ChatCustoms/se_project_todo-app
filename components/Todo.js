@@ -35,16 +35,9 @@ class Todo {
     }
     
     else {
-      // Handle invalid date strings gracefully.  Maybe set a default message or nothing.
-      this._todoDate.textContent = ""; // Example
+      this._todoDate.textContent = ""; 
       console.error("Invalid date string:", data.date);
     }
-//  else {
-//     // Handle the case where data or data.date is missing.  Set a default, hide the date element, or log an error.
-//     console.warn("Todo item is missing a date property:", data);
-//     this._todoDate.textContent = "";  // Or hide the element
-//     // Example:  this._todoDate.style.display = "none";
-// }
     
   }
 }

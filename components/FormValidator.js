@@ -8,14 +8,16 @@ class FormValidator {
     this._formEl = formEl;
   }
 
+  
+
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-        showInputError(
+        this._showInputError(
           inputElement,
           inputElement.validationMessage,
         );
       } else {
-        hideInputError(inputElement);
+        this._hideInputError(inputElement);
       }
   }
 
@@ -30,7 +32,6 @@ class FormValidator {
       this._submitButtonSelector
     );
 
-    toggleButtonState(inputList, buttonElement, settings);
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
