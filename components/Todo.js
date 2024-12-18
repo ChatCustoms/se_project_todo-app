@@ -22,7 +22,6 @@ class Todo {
   }
 
   _generateDate(data) {
-    console.log(data);
     if(data && data.date) {
     this._dueDate = new Date(data.date);
     this._todoDate = this._todoElement.querySelector(".todo__date");

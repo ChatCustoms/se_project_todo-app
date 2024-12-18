@@ -71,4 +71,3 @@ const enableValidation = (settings) => {
 
 enableValidation(validationConfig);
 
-export { showInputError, hideInputError };

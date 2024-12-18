@@ -1,4 +1,3 @@
-import { showInputError, hideInputError } from "../scripts/validate";
 
 class FormValidator {
   constructor(settings, formEl) {
@@ -10,11 +9,32 @@ class FormValidator {
     this._formEl = formEl;
   }
 
-  _checkInputValidity(inputElement) {
+  _showInputError (formEl, inputElement, errorMessage, settings) {
+    const errorElementId = `#${inputElement.id}-error`;
+    const errorElement = formEl.querySelector(errorElementId);
+    inputElement.classList.add(settings.inputErrorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(settings.errorClass);
+  };
+  
+  _hideInputError (formEl, inputElement, settings) {
+    const errorElementId = `#${inputElement.id}-error`;
+    const errorElement = formEl.querySelector(errorElementId);
+    inputElement.classList.remove(settings.inputErrorClass);
+    errorElement.classList.remove(settings.errorClass);
+    errorElement.textContent = "";
+  };
+
+  _checkInputValidity(formEl, inputElement) {
     if (!inputElement.validity.valid) {
-      showInputError(inputElement, inputElement.validationMessage);
+      this._showInputError(
+        formEl,
+        inputElement,
+        inputElement.validationMessage,
+        settings
+      );
     } else {
-      hideInputError(inputElement);
+      this._hideInputError(formEl, inputElement, settings);
     }
   }
 
