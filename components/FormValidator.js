@@ -1,3 +1,5 @@
+import { showInputError, hideInputError } from "../scripts/validate";
+
 class FormValidator {
   constructor(settings, formEl) {
     this._inputSelector = settings.inputSelector;
@@ -8,17 +10,12 @@ class FormValidator {
     this._formEl = formEl;
   }
 
-  
-
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-        this._showInputError(
-          inputElement,
-          inputElement.validationMessage,
-        );
-      } else {
-        this._hideInputError(inputElement);
-      }
+      showInputError(inputElement, inputElement.validationMessage);
+    } else {
+      hideInputError(inputElement);
+    }
   }
 
   _setEventListeners() {
@@ -26,12 +23,9 @@ class FormValidator {
       this._formEl.querySelectorAll(this._inputSelector)
     );
 
-    
-
     const buttonElement = this._formEl.querySelector(
       this._submitButtonSelector
     );
-
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
