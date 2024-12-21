@@ -22,24 +22,21 @@ class Todo {
   }
 
   _generateDate(data) {
-    if(data && data.date) {
-    this._dueDate = new Date(data.date);
-    this._todoDate = this._todoElement.querySelector(".todo__date");
-    if (!isNaN(this._dueDate)) {
-      this._todoDate.textContent = `Due: ${this._dueDate.toLocaleString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })}`;
+    if (data && data.date) {
+      this._dueDate = new Date(data.date);
+      this._todoDate = this._todoElement.querySelector(".todo__date");
+      if (!isNaN(this._dueDate)) {
+        this._todoDate.textContent = `Due: ${this._dueDate.toLocaleString(
+          "en-US",
+          {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          }
+        )}`;
+      }
     }
-    
-    else {
-      this._todoDate.textContent = ""; 
-      console.error("Invalid date string:", data.date);
-    }
-    
   }
-}
 
   getView() {
     this._todoElement = this._templateElement.content
