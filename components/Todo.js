@@ -14,11 +14,11 @@ class Todo {
         this._handleCheck(false);
       }
       this._handleTotal(false);
+
     });
     this._todoCheckboxEl.addEventListener("change", () => {
       this._completed = !this._completed;
       this._handleCheck(this._completed);
-      this._handleTotal(this._completed);
     });
   }
 
