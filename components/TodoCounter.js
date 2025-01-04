@@ -15,9 +15,9 @@ class TodoCounter {
     // subtract 1. In either case, call the method to update
     // the text content.
     if (increment) {
-      this._completed+=1;
+      this._completed += 1;
     } else {
-      this._completed-=1;
+      this._completed -= 1;
     }
     this._updateText();
   };
@@ -29,9 +29,9 @@ class TodoCounter {
     // subtract 1. In either case, call the method to update the
     // text content.
     if (increment) {
-      this._total+=1;
+      this._total += 1;
     } else {
-      this._total-=1;
+      this._total -= 1;
     }
     this._updateText();
   };
