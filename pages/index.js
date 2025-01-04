@@ -7,39 +7,13 @@ import FormValidator from "../components/FormValidator.js";
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (data) => {},
-});
-
-addTodoPopup.setEventListeners();
-
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
-
-const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
-  const todoElement = todo.getView();
-
-  return todoElement;
-};
-
-addTodoButton.addEventListener("click", () => {
-  addTodoPopup.open();
-});
-
-// addTodoCloseBtn.addEventListener("click", () => {
-//   closeModal(addTodoPopupEl);
-// });
-
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
+  handleFormSubmit: (_formValues) => {
+    const name = _formValues.name;
+  const dateInput = _formValues.date;
 
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
@@ -49,15 +23,35 @@ addTodoForm.addEventListener("submit", (evt) => {
   renderTodo(values);
   newTodoValidator.resetValidation();
   addTodoPopup.close();
+  },
 });
+
+const generateTodo = (data) => {
+  const todo = new Todo(data, "#todo-template");
+  const todoElement = todo.getView();
+
+  return todoElement;
+};
 
 const renderTodo = (item) => {
   const todo = generateTodo(item);
   todosList.append(todo);
 };
 
-initialTodos.forEach((item) => {
+  initialTodos.forEach((item) => {
   renderTodo(item);
+  });
+
+addTodoPopup.setEventListeners();
+
+const closeModal = (modal) => {
+  modal.classList.remove("popup_visible");
+};
+
+
+
+addTodoButton.addEventListener("click", () => {
+  addTodoPopup.open();
 });
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
