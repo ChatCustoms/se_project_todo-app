@@ -19,6 +19,9 @@ class TodoCounter {
     } else {
       this._completed --;
     }
+    if (this._total === 0) {
+        this._completed = 0;
+      }
     this._updateText();
   };
 
