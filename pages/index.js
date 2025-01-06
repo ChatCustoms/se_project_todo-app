@@ -1,26 +1,26 @@
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { initialTodos, validationConfig, Section } from "../utils/constants.js";
+import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
 import TodoCounter from "../components/TodoCounter.js";
+import Section from "../components/Section.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-const todosList = document.querySelector(".todos__list");
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
-const section = new Section(
-  {
-    items: initialTodos,
-    renderer: (item) => {
-      const todo = generateTodo(item);
-      section.addItem(todo);
-    },
+const section = new Section({
+  items: initialTodos,
+  renderer: (item) => {
+    const todoItem = generateTodo(item);
+    section.addItem(todoItem);
   },
-  ".todos__list"
-);
+  containerSelector: ".todos__list",
+});
+
+  section.renderItems();
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
@@ -69,20 +69,11 @@ const generateTodo = (data) => {
   return todoElement;
 };
 
-const renderTodo = (item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
-};
-
-initialTodos.forEach((item) => {
-  renderTodo(item);
-});
-
 addTodoPopup.setEventListeners();
 
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
+// const closeModal = (modal) => {
+//   modal.classList.remove("popup_visible");
+// };
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
