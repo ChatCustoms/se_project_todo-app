@@ -15,13 +15,13 @@ class TodoCounter {
     // subtract 1. In either case, call the method to update
     // the text content.
     if (increment) {
-      this._completed ++;
+      this._completed++;
     } else {
-      this._completed --;
+      this._completed--;
     }
     if (this._total === 0) {
-        this._completed = 0;
-      }
+      this._completed = 0;
+    }
     this._updateText();
   };
 
@@ -32,9 +32,9 @@ class TodoCounter {
     // subtract 1. In either case, call the method to update the
     // text content.
     if (increment) {
-      this._total ++;
+      this._total++;
     } else {
-      this._total --;
+      this._total--;
     }
     this._updateText();
   };
