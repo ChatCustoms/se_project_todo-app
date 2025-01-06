@@ -11,11 +11,15 @@ const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
+function renderTodo(todo) {
+  section.addItem(todo);
+}
+
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (_formValues) => {
-    const name = _formValues.name;
-    const dateInput = _formValues.date;
+  handleFormSubmit: (formValues) => {
+    const name = formValues.name;
+    const dateInput = formValues.date;
 
     const date = new Date(dateInput);
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
@@ -23,7 +27,7 @@ const addTodoPopup = new PopupWithForm({
     const id = uuidv4();
     const values = { name, date, id };
     const todo = generateTodo(values);
-    section.addItem(todo);
+    renderTodo(todo);
     todoCounter.updateTotal(true);
     newTodoValidator.resetValidation();
     addTodoPopup.close();
@@ -62,7 +66,7 @@ const section = new Section({
   items: initialTodos,
   renderer: (item) => {
     const todoItem = generateTodo(item);
-    section.addItem(todoItem);
+    renderTodo(todoItem);
   },
   containerSelector: ".todos__list",
 });

@@ -55,7 +55,7 @@ class FormValidator {
     });
   }
 
-  hasInvalidInput = (_inputList) => {
+  hasInvalidInput = () => {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
