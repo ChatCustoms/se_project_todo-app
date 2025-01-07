@@ -27,8 +27,7 @@ const addTodoPopup = new PopupWithForm({
 
     const id = uuidv4();
     const values = { name, date, id };
-    const todoElement = generateTodo(values);
-    renderTodo(todoElement);
+    renderTodo(values);
     todoCounter.updateTotal(true);
     newTodoValidator.resetValidation();
     addTodoPopup.close();
@@ -59,15 +58,13 @@ const generateTodo = (data) => {
     handleTotal
   );
   const todoElement = todo.getView();
-console.log(data);
   return todoElement;
 };
 
 const section = new Section({
   items: initialTodos,
   renderer: (item) => {
-    const todoItem = generateTodo(item);
-    renderTodo(todoItem);
+    renderTodo(item);
   },
   containerSelector: ".todos__list",
 });
